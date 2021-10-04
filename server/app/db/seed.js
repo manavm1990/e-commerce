@@ -1,11 +1,10 @@
-import mongoose from "mongoose";
-import config from "../config.js";
 import Category from "../models/Category.js";
 import Product from "../models/Product.js";
 import User from "../models/User.js";
+import client from "./client.js";
 
-mongoose
-  .connect(config.db.url)
+client
+  .connect()
   .then(() => {
     Promise.all([
       Category.deleteMany({}),
@@ -160,7 +159,5 @@ mongoose
   })
   .finally(() => {
     console.log("🗃️ 🌱");
-    mongoose.connection.close();
-    console.info("Mongoose connection disconnected");
-    process.exit(0);
+    client.close();
   });
