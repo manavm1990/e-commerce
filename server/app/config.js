@@ -7,4 +7,5 @@ export default {
   db: {
     url: process.env.DB_CLIENT_URL || "mongodb://localhost/mernshopping",
   },
+  saltRounds: 10,
 };
