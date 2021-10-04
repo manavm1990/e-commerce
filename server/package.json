@@ -19,10 +19,8 @@
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-pino-logger": "^6.0.0",
     "graphql": "^15.6.0",
     "mongodb": "^4.1.2",
-    "mongoose": "^6.0.8",
-    "pino-pretty": "^7.0.1"
+    "mongoose": "^6.0.8"
   }
 }
