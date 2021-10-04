@@ -8,4 +8,5 @@ export default {
     url: process.env.DB_CLIENT_URL || "mongodb://localhost/mernshopping",
   },
   saltRounds: 10,
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY,
 };
