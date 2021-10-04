@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "main": "app/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --watch app"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-xo": "^0.39.0",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^6.0.0",
+    "mongodb": "^4.1.2",
+    "pino-pretty": "^7.0.1"
+  }
+}
