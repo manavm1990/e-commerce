@@ -3,6 +3,7 @@ import config from "../config.js";
 
 export default {
   connect() {
+    console.info("Connecting to MongoDB...");
     return mongoose.connect(config.db.url);
   },
   close() {
