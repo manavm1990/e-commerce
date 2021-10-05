@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "camelcase": "warn",
     "capitalized-comments": "off",
     "no-console": 1,
     "new-cap": "off",
