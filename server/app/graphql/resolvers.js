@@ -1,7 +1,9 @@
 import AuthenticationError from "apollo-server-express";
+import config from "../config.js";
 import CategoryController from "../controllers/CategoryController.js";
 import ProductController from "../controllers/ProductController.js";
 import UserController from "../controllers/UserController.js";
+import checkoutService from "../services/checkoutService.js";
 
 export default {
   Query: {
@@ -24,6 +26,30 @@ export default {
 
       return UserController.showOrder(user.id, _id).exec();
     },
-    checkout(_, { _id }, { user }) {},
+
+    // Handled by the checkout service (no controller here)
+    async checkout(
+      _,
+      // These are just the ids - not the actual products
+      { products: productIds },
+      { headers }
+    ) {
+      // Will be used for success/error redirection by Stripe API 💳
+      const referrerUrl = headers?.referer
+        ? new URL(headers.referer).origin
+        : config.clientUrl;
+
+      // Get the actual products from the ids
+      const products = await Promise.all(
+        productIds.map((productId) => ProductController.show(productId))
+      );
+
+      const checkoutSession = await checkoutService.generateCheckoutSession(
+        products,
+        referrerUrl
+      );
+
+      return { session: checkoutSession.id };
+    },
   },
 };
