@@ -1,27 +1,35 @@
-// Entry point for the application
+import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
+import { ApolloServer } from "apollo-server-express";
 import express from "express";
-import pino from "express-pino-logger";
-import config from "./config.js";
-// TODO: Import the routes
+import http from "http";
+import dbClient from "./db/client.js";
+import { resolvers, typeDefs } from "./graphql/index.js";
 
 const app = express();
-
-app.get("/", (_, res) => {
-  res.send("Hello World");
+const httpServer = http.createServer(app);
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-// Logging middleware
-app.use(
-  pino({
-    prettyPrint: { colorize: true, levelFirst: true },
-    messageFormat: "{levelLabel} - {pid} - url:{request.url}",
+server
+  .start()
+  .then(() => {
+    server.applyMiddleware({ app });
+
+    httpServer.listen({ port: 4000 }, () => {
+      console.info(
+        `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+      );
+    });
   })
-);
+  .catch((error) => {
+    console.error("Error starting server: ", error);
+  });
 
-// TODO: Use json middleware (if needed)
+dbClient.connect();
 
-// TODO: Mount the routes (maybe 🤔 /api)
-
-app.listen(config.port, () => {
-  console.log(`Server 🏃🏾‍♂️ at: http://localhost:${config.port}`);
+process.on("SIGINT", () => {
+  dbClient.close();
 });
