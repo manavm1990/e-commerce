@@ -4,6 +4,7 @@ import CategoryController from "../controllers/CategoryController.js";
 import ProductController from "../controllers/ProductController.js";
 import UserController from "../controllers/UserController.js";
 import checkoutService from "../services/checkoutService.js";
+import jwtService from "../services/tokenService.js";
 
 export default {
   Query: {
@@ -50,6 +51,14 @@ export default {
       );
 
       return { session: checkoutSession.id };
+    },
+  },
+  Mutation: {
+    async addUser(_, args) {
+      const user = await UserController.create(args);
+      const token = jwtService.generateToken({ user });
+
+      return { user, token };
     },
   },
 };

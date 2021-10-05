@@ -1,6 +1,9 @@
 import User from "../models/User.js";
 
 export default {
+  create(payload) {
+    return User.create(payload);
+  },
   async show(id) {
     const foundUser = User.findById(id).populate({
       path: "orders.products",
