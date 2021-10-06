@@ -77,5 +77,8 @@ export default {
       if (!user) throw new AuthenticationError("Not authenticated");
       return UserController.update(user._id, args);
     },
+    updateProduct(_, { _id, quantity }) {
+      return ProductController.decrementInventory(_id, quantity);
+    },
   },
 };

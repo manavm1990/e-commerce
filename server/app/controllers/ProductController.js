@@ -1,6 +1,14 @@
 import Product from "../models/Product.js";
 
 export default {
+  decrementInventory(id, quantity) {
+    return Product.findByIdAndUpdate(id, {
+      // Increment by a negative number - always.
+      $inc: {
+        quantity: Math.abs(quantity) * -1,
+      },
+    }).exec();
+  },
   index(category, search) {
     return Product.find({
       category,
