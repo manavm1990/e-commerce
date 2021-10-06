@@ -4,6 +4,9 @@ export default {
   create(payload) {
     return User.create(payload);
   },
+  createOrder(id, order) {
+    return User.findByIdAndUpdate(id, { $push: { orders: order } });
+  },
   async show(id) {
     const foundUser = User.findById(id).populate({
       path: "orders.products",
@@ -18,5 +21,8 @@ export default {
     const foundUser = await this.show(userId);
 
     return foundUser.order.id(orderId);
+  },
+  update(id, payload) {
+    return User.findByIdAndUpdate(id, payload, { new: true }).exec();
   },
 };

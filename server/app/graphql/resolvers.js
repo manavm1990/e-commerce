@@ -3,6 +3,7 @@ import config from "../config.js";
 import CategoryController from "../controllers/CategoryController.js";
 import ProductController from "../controllers/ProductController.js";
 import UserController from "../controllers/UserController.js";
+import Order from "../models/Order.js";
 import checkoutService from "../services/checkoutService.js";
 import jwtService from "../services/tokenService.js";
 
@@ -59,6 +60,22 @@ export default {
       const token = jwtService.generateToken({ user });
 
       return { user, token };
+    },
+    async addOrder(_, { products }, { user }) {
+      if (!user) throw new AuthenticationError("Not authenticated");
+
+      // This doesn't go into the database (yet)
+      const newOrder = new Order({ products });
+
+      // After the order is added to the user...
+      await UserController.createOrder(user._id, newOrder).exec();
+
+      // Return a populated order
+      return newOrder.populate("products");
+    },
+    updateUser(_, args, { user }) {
+      if (!user) throw new AuthenticationError("Not authenticated");
+      return UserController.update(user._id, args);
     },
   },
 };
