@@ -1,11 +1,15 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 export default {
+  alias: {
+    components: "./src/components",
+    "@app": "./src",
+  },
   mount: {
     // directory name: 'build directory'
     public: '/',
     src: '/dist'
   },
-  plugins: 
+  plugins:
     ['@snowpack/plugin-react-refresh', '@snowpack/plugin-postcss',]
   ,
   routes: [
