@@ -63,6 +63,6 @@ export default gql`
       password: String
     ): User
     updateProduct(_id: ID!, quantity: Int!): Product
-    #   login(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 `;

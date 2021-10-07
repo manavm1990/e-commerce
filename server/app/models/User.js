@@ -44,7 +44,10 @@ userSchema.pre(
   }
 );
 
-userSchema.methods.validatePassword = (password) =>
-  bcrypt.compare(password, this.password);
+userSchema.methods.validatePassword =
+  // ⚠️ STILL Need to use arrow function to preserve 'this' context
+  function (password) {
+    return bcrypt.compare(password, this.password);
+  };
 
 export default mongoose.model("User", userSchema);

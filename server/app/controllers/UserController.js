@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import AuthenticationError from "apollo-server-express";
 
 export default {
   create(payload) {
@@ -6,6 +7,13 @@ export default {
   },
   createOrder(id, order) {
     return User.findByIdAndUpdate(id, { $push: { orders: order } });
+  },
+  async login(email, password) {
+    const existingUser = await User.findOne({ email });
+    if (!existingUser) throw new AuthenticationError("Access denied 🔒 🙅🏾‍♂️.");
+    const isValid = await existingUser.validatePassword(password);
+    if (!isValid) throw new AuthenticationError("Access denied 🔒 🙅🏾‍♂️.");
+    return existingUser;
   },
   async show(id) {
     const foundUser = User.findById(id).populate({

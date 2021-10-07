@@ -80,5 +80,11 @@ export default {
     updateProduct(_, { _id, quantity }) {
       return ProductController.decrementInventory(_id, quantity);
     },
+    async login(_, { email, password }) {
+      const user = UserController.login(email, password);
+      const token = jwtService.generateToken({ user });
+
+      return { user, token };
+    },
   },
 };

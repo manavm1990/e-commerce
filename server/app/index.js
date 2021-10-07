@@ -26,10 +26,14 @@ const server = new ApolloServer({
     // If token is not present, return empty context
     if (!token) return req;
 
-    const verifiedToken = tokenService.verifyToken(token);
-
-    // Mixin the verified user from the token into the request
-    return { ...req, user: verifiedToken.user };
+    try {
+      const { user } = tokenService.verifyToken(token);
+      // Mixin the verified user from the token into the request
+      return { ...req, user };
+    } catch (err) {
+      console.error(err.message);
+      return req;
+    }
   },
 });
 

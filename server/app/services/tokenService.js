@@ -8,12 +8,8 @@ export default {
     });
   },
   verifyToken(token) {
-    try {
-      return jwt.verify(token, config.jwt.secret, {
-        maxAge: config.jwt.expirationTime,
-      });
-    } catch (err) {
-      console.error(err.message, "Expired token");
-    }
+    return jwt.verify(token, config.jwt.secret, {
+      maxAge: config.jwt.expirationTime,
+    });
   },
 };
