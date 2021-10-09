@@ -1,3 +1,4 @@
+import { Product } from "@app/utils/types";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -15,16 +16,7 @@ function ProductList({ products }) {
 }
 
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.exact({
-      _id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      description: PropTypes.string,
-      image: PropTypes.string,
-      category: PropTypes.exact({ name: PropTypes.string.isRequired }),
-    })
-  ).isRequired,
+  products: PropTypes.arrayOf(Product).isRequired,
 };
 
 export default ProductList;
