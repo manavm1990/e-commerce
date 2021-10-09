@@ -6,5 +6,6 @@ export const Product = PropTypes.exact({
   price: PropTypes.number.isRequired,
   description: PropTypes.string,
   image: PropTypes.string,
+  quantity: PropTypes.number,
   category: PropTypes.exact({ name: PropTypes.string.isRequired }),
 });
