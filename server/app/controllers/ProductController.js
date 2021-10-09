@@ -10,13 +10,16 @@ export default {
     }).exec();
   },
   index(category, search) {
-    return Product.find({
-      category,
-      name: {
-        // TODO{manav.misra}: Make this search case insensitive
-        $regex: search,
-      },
-    }).populate("category");
+    const params = {};
+
+    if (category) {
+      params.category = category;
+    }
+
+    if (search) {
+      params.search = search;
+    }
+    return Product.find(params).populate("category");
   },
   show(id) {
     // Mongoose doesn't require playing games with `_id` vs `id`. 🤓
