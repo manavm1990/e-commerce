@@ -6,7 +6,7 @@ function Actions({ id, qtyAvail }) {
   return qtyAvail ? (
     <form>
       {/* TODO: Don't let number exceed `qtyAvail` */}
-      <input type="number" defaultValue="1" />
+      <input type="number" defaultValue="1" className="p-1 w-12" />
       <button type="submit">🛒 Add to cart</button>
 
       <Link to={`/products/${id}`}>👁️ View Description</Link>
