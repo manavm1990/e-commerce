@@ -1,6 +1,7 @@
 import { Product } from "@app/utils/types";
 import PropTypes from "prop-types";
 import React from "react";
+import ProductCard from "./ProductCard";
 
 function ProductList({ products }) {
   return (
@@ -8,7 +9,7 @@ function ProductList({ products }) {
       <h1>Products</h1>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>{product.name}</li>
+          <ProductCard key={product._id} product={product} />
         ))}
       </ul>
     </div>
