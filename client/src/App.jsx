@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import HomeView from "./views/HomeView";
+import config from "./utils/config";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -13,6 +14,10 @@ const client = new ApolloClient({
 });
 
 function App() {
+  React.useEffect(() => {
+    document.title = config.siteName;
+  });
+
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
