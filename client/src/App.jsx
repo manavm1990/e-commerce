@@ -16,7 +16,7 @@ const client = new ApolloClient({
 function App() {
   React.useEffect(() => {
     document.title = config.siteName;
-  });
+  }, []);
 
   return (
     <ApolloProvider client={client}>
