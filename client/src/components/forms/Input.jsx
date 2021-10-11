@@ -1,22 +1,19 @@
 import camelCase from "lodash.camelcase";
 import kebabCase from "lodash.kebabcase";
-import startCase from "lodash.startcase";
 import PropTypes from "prop-types";
 import React from "react";
 
-function Input({ id, label, name, type }) {
-  const inputId = id || kebabCase(name);
-
+function Input({ label, type }) {
   return (
     <div>
-      <label htmlFor={inputId} className="sr-only">
+      <label htmlFor={kebabCase(label)} className="sr-only">
         {label}
       </label>
       <input
         type={type}
-        id={inputId}
+        id={kebabCase(label)}
         name={name || camelCase(label)}
-        placeholder={startCase(label)}
+        placeholder={label}
         className="p-2 rounded"
       />
     </div>
@@ -24,9 +21,7 @@ function Input({ id, label, name, type }) {
 }
 
 Input.propTypes = {
-  id: PropTypes.string,
   label: PropTypes.string.isRequired,
-  name: PropTypes.string,
   type: PropTypes.string,
 };
 

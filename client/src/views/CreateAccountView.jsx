@@ -8,10 +8,10 @@ function CreateAccountView() {
       <Header />
       <main className="container mx-auto py-4">
         <form className="flex flex-col gap-4 items-center">
-          <Input type="text" label="First Name" />
-          <Input type="text" label="Last Name" />
-          <Input type="email" label="email" />
-          <Input type="password" label="password" />
+          <Input label="First Name" />
+          <Input label="Last Name" />
+          <Input type="email" label="Email" />
+          <Input type="password" label="Password" />
           <button
             type="submit"
             className="bg-green-500 hover:bg-green-700 text-white py-2 px-2 rounded-sm w-max"
