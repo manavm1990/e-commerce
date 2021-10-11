@@ -21,7 +21,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <HomeView />;
+        <HomeView />
       </BrowserRouter>
     </ApolloProvider>
   );
