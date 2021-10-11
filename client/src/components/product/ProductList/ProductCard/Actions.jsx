@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-function Actions({ id, qtyAvail }) {
+function Actions({ qtyAvail }) {
   return qtyAvail ? (
     <form className="py-3">
       {/* TODO: Don't let number exceed `qtyAvail` */}
@@ -19,7 +19,6 @@ function Actions({ id, qtyAvail }) {
 }
 
 Actions.propTypes = {
-  id: PropTypes.string.isRequired,
   qtyAvail: PropTypes.number,
 };
 
