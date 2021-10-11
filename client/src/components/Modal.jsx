@@ -15,6 +15,7 @@ function Error({ color, message, openBtnTxt, title }) {
 
   return (
     <>
+      {/* Option to manually open this spit. */}
       {openBtnTxt && (
         <div className="fixed inset-0 flex items-center justify-center">
           <button

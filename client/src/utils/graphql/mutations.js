@@ -16,6 +16,9 @@ export const ADD_USER = gql`
       token
       user {
         _id
+
+        # Will use this to greet the user by name 💬
+        firstName
       }
     }
   }
