@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import PropTypes from "prop-types";
 import React from "react";
 
-function Modal({ children, openTxt, title }) {
+function Error({ color, message, openBtnTxt, title }) {
   const [isOpen, setIsOpen] = React.useState(true);
 
   function closeModal() {
@@ -15,16 +15,17 @@ function Modal({ children, openTxt, title }) {
 
   return (
     <>
-      <div className="fixed inset-0 flex items-center justify-center">
-        <button
-          type="button"
-          onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
-        >
-          {openTxt}
-        </button>
-      </div>
-
+      {openBtnTxt && (
+        <div className="fixed inset-0 flex items-center justify-center">
+          <button
+            type="button"
+            onClick={openModal}
+            className="px-4 py-2 text-sm font-medium text-white bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+          >
+            Open dialog
+          </button>
+        </div>
+      )}
       <Transition appear show={isOpen} as={React.Fragment}>
         <Dialog
           as="div"
@@ -63,16 +64,16 @@ function Modal({ children, openTxt, title }) {
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900"
+                  className={`text-lg font-medium leading-6 text-${color}-900`}
                 >
                   {title}
                 </Dialog.Title>
-                <div className="mt-2">{children}</div>
+                <p className={`mt-2 text-sm text-${color}-500`}>{message}</p>
 
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className={`inline-flex justify-center px-4 py-2 text-sm font-medium text-${color}-900 bg-${color}-100 border border-transparent rounded-md hover:bg-${color}-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-${color}-500`}
                     onClick={closeModal}
                   >
                     Got it, thanks!
@@ -87,10 +88,16 @@ function Modal({ children, openTxt, title }) {
   );
 }
 
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  openTxt: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+Error.propTypes = {
+  color: PropTypes.oneOf(["red", "blue", "green", "yellow"]),
+  message: PropTypes.string.isRequired,
+  openBtnTxt: PropTypes.string,
+  title: PropTypes.string,
 };
 
-export default Modal;
+Error.defaultProps = {
+  color: "red",
+  title: "Error",
+};
+
+export default Error;
