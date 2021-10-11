@@ -1,3 +1,4 @@
+import config from "@app/utils/config";
 import { Product } from "@app/utils/types";
 import React from "react";
 import Actions from "./Actions";
@@ -8,7 +9,7 @@ function ProductCard({
   return (
     <section id={id} className="flex flex-col items-center">
       <figure>
-        <img src={image} />
+        <img src={`${config.imgServerUrl}/${image}`} className="rounded-sm" />
         <figcaption className="text-center">{name}</figcaption>
       </figure>
 
