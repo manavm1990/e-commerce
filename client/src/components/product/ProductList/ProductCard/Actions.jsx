@@ -3,10 +3,15 @@ import React from "react";
 
 function Actions({ id, qtyAvail }) {
   return qtyAvail ? (
-    <form>
+    <form className="py-3">
       {/* TODO: Don't let number exceed `qtyAvail` */}
-      <input type="number" defaultValue="1" className="p-1 w-12" />
-      <button type="submit">🛒 Add to cart</button>
+      <input type="number" defaultValue="1" className="p-1 w-12 mr-2" />
+      <button
+        type="submit"
+        className="bg-green-500 hover:bg-green-700 text-white py-2 px-2 rounded-sm w-max"
+      >
+        🛒 Add to Cart
+      </button>
     </form>
   ) : (
     <p>Out of stock!</p>

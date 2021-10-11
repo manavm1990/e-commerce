@@ -9,8 +9,13 @@ function ProductCard({
   return (
     <section id={id} className="flex flex-col items-center">
       <figure>
-        <img src={`${config.imgServerUrl}/${image}`} className="rounded-sm" />
-        <figcaption className="text-center">{name}</figcaption>
+        <img
+          src={`${config.imgServerUrl}/${image}`}
+          className="filter drop-shadow-2xl rounded-sm"
+        />
+        <figcaption className="my-2 text-xl text-bold text-center">
+          {name}
+        </figcaption>
       </figure>
 
       {/* TODO: Conditionally apply this class depending on if we are looking at card or details */}

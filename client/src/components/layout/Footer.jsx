@@ -1,9 +1,9 @@
-import React from "react";
 import config from "@app/utils/config";
+import React from "react";
 
 function Footer() {
   return (
-    <footer className="border-t-2 px-8 py-4">
+    <footer className="py-2 text-center">
       &copy; {new Date(Date.now()).getFullYear()} {config.siteName}
     </footer>
   );
