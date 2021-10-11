@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.16",
+    "@headlessui/react": "^1.4.1",
     "graphql": "^15.6.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
