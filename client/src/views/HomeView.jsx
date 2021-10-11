@@ -13,6 +13,7 @@ function HomeView() {
 
   return (
     <>
+      {/* h1 is in header... */}
       <Header />
       <main className="container mx-auto">
         <List products={data.products} />
