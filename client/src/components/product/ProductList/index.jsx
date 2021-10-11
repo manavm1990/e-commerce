@@ -5,14 +5,14 @@ import ProductCard from "./ProductCard";
 
 function ProductList({ products }) {
   return (
-    <div>
-      <h1>Products</h1>
-      <ul>
+    <section className="my-2 p-4">
+      <h2 className="font-bold my-4 text-lg text-center">Products</h2>
+      <div className="grid">
         {products.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
-      </ul>
-    </div>
+      </div>
+    </section>
   );
 }
 

@@ -6,14 +6,14 @@ function ProductCard({
   product: { _id: id, name, price, description, image, quantity },
 }) {
   return (
-    <section id={id}>
+    <section id={id} className="flex flex-col items-center">
       <figure>
         <img src={image} />
-        <figcaption>{name}</figcaption>
+        <figcaption className="text-center">{name}</figcaption>
       </figure>
 
       {/* TODO: Conditionally apply this class depending on if we are looking at card or details */}
-      <p className="truncate">{description}</p>
+      <p className="overflow-ellipsis">{description}</p>
       <p>{price}</p>
       <Actions id={id} qtyAvail={quantity} />
     </section>

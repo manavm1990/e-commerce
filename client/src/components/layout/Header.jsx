@@ -1,13 +1,21 @@
-import React from "react";
 import config from "@app/utils/config";
+import React from "react";
 
 function Header() {
   return (
-    <header className="border-b-2 px-8 py-4 flex justify-between">
-      <h1>{config.siteName}</h1>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-        Login
-      </button>
+    <header className="px-8 flex flex-col">
+      <h1 className="font-extrabold text-2xl text-center my-4">
+        {config.siteName}
+      </h1>
+      <div className="flex justify-between">
+        <button className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-full w-max">
+          Login
+        </button>
+
+        <button className="bg-yellow-500 hover:bg-yellow-700 text-white py-2 px-4 rounded-full w-max">
+          Create Account
+        </button>
+      </div>
     </header>
   );
 }
