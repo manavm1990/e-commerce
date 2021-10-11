@@ -19,6 +19,11 @@ const UserService = {
     }
   },
 
+  getUser() {
+    const token = localStorage.getItem("token");
+    return token ? decode(localStorage.getItem("token")).user : null;
+  },
+
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem("token", idToken);

@@ -2,6 +2,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+import UserContext from "./context/UserContext";
+import UserService from "./services/User";
 import config from "./utils/config";
 import CreateAccountView from "./views/CreateAccountView";
 import HomeView from "./views/HomeView";
@@ -24,15 +26,18 @@ function App() {
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Switch>
-          <Route path="/create-account">
-            <CreateAccountView />
-          </Route>
-          <Route path="/login">
-            <LoginView />
-          </Route>
-          <Route exact path="/">
-            <HomeView />
-          </Route>
+          {/* Provide a way to access and/or set the current user. */}
+          <UserContext.Provider value={React.useState(UserService.getUser())}>
+            <Route path="/create-account">
+              <CreateAccountView />
+            </Route>
+            <Route path="/login">
+              <LoginView />
+            </Route>
+            <Route exact path="/">
+              <HomeView />
+            </Route>
+          </UserContext.Provider>
         </Switch>
       </BrowserRouter>
     </ApolloProvider>
