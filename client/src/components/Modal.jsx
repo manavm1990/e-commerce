@@ -89,7 +89,7 @@ function Error({ color, message, openBtnTxt, title }) {
 }
 
 Error.propTypes = {
-  color: PropTypes.oneOf(["red", "blue", "green", "yellow"]),
+  color: PropTypes.oneOf(["red", "blue", "green", "yellow", "gray"]),
   message: PropTypes.string.isRequired,
   openBtnTxt: PropTypes.string,
   title: PropTypes.string,
