@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import config from "./utils/config";
+import CreateAccountView from "./views/CreateAccountView";
 import HomeView from "./views/HomeView";
 import LoginView from "./views/LoginView";
 
@@ -23,10 +24,13 @@ function App() {
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Switch>
+          <Route path="/create-account">
+            <CreateAccountView />
+          </Route>
           <Route path="/login">
             <LoginView />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <HomeView />
           </Route>
         </Switch>
