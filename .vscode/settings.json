@@ -18,6 +18,7 @@
   "files.autoSave": "onFocusChange",
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
   "javascript.validate.enable": false,
   "prettier.requireConfig": true,
   "workbench.view.alwaysShowHeaderActions": true
