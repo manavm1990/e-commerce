@@ -39,9 +39,9 @@ function Header() {
             </Link>
           )}
 
-          {!user && location.pathname !== "/create-account" && (
+          {!user && location.pathname !== "/add-user" && (
             <Link
-              to="/create-account"
+              to="/add-user"
               className="bg-yellow-500 hover:bg-yellow-700 text-white py-2 px-4 rounded-full w-max"
             >
               Create Account

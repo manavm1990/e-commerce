@@ -5,9 +5,8 @@ import "./App.css";
 import UserContext from "./context/UserContext";
 import UserService from "./services/User";
 import config from "./utils/config";
-import CreateAccountView from "./views/CreateAccountView";
+import AddUserLoginView from "./views/AddUserLoginView";
 import HomeView from "./views/HomeView";
-import LoginView from "./views/LoginView";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -28,11 +27,8 @@ function App() {
         <Switch>
           {/* Provide a way to access and/or set the current user. */}
           <UserContext.Provider value={React.useState(UserService.getUser())}>
-            <Route path="/create-account">
-              <CreateAccountView />
-            </Route>
-            <Route path="/login">
-              <LoginView />
+            <Route path={["/add-user", "/login"]}>
+              <AddUserLoginView />
             </Route>
             <Route exact path="/">
               <HomeView />
