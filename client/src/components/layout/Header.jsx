@@ -21,7 +21,10 @@ function Header() {
       </h1>
       <div className="flex flex-col gap-4 items-center mb-2">
         {user ? (
-          <button onClick={handleClick}>Logout</button>
+          <>
+            <button onClick={handleClick}>Logout</button>
+            <p>Welcome {user.firstName}. Now, go spend some money! 💰</p>
+          </>
         ) : (
           <p>Login or Create Account to shop 🛍️!</p>
         )}
