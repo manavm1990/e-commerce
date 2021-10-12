@@ -9,7 +9,10 @@ import AddUserLoginView from "./views/AddUserLoginView";
 import HomeView from "./views/HomeView";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri:
+    import.meta.env.NODE_ENV === "development"
+      ? "http://localhost:4000/graphql"
+      : "https://lit-springs-06284.herokuapp.com/graphql",
 
   // InMemoryCache is a class that implements the Cache interface.
   // The cache is used to cache query results.
