@@ -3,7 +3,7 @@
   "main": "app/index.js",
   "type": "module",
   "scripts": {
-    "build": "npm run seed && npm start",
+    "build": "npm run seed && node app/index.js",
     "start": "nodemon --watch app",
     "seed": "node app/db/seed.js"
   },
