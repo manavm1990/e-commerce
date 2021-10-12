@@ -42,7 +42,7 @@ server
   .then(() => {
     server.applyMiddleware({ app });
 
-    httpServer.listen({ port: 4000 }, () => {
+    httpServer.listen({ port: process.env.PORT || 4000 }, () => {
       console.info(
         `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
       );
