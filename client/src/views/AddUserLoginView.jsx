@@ -8,7 +8,7 @@ import Modal from "components/Modal";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-function CreateAccountView() {
+function AddUserLoginView() {
   // It's like a global useState 🤓.
   const [user, setUser] = React.useContext(UserContext);
 
@@ -107,4 +107,4 @@ function CreateAccountView() {
   );
 }
 
-export default CreateAccountView;
+export default AddUserLoginView;
